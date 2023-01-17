@@ -28,30 +28,12 @@ public class Scooter {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "key")
+    @Column(name = "serial")
     private String key;
-
-    // TODO: 2023/01/13 외래키 설정
-    @Column(name = "name")
-    private String name;
-
-    @Column(name = "battery")
-    private Float battery;
 
     @Column(name = "xCoordinate")
     private Float xCoordinate;
 
     @Column(name = "yCoordinate")
     private Float yCoordinate;
-
-    @CreationTimestamp
-    @Column(name = "createAt")
-    private Date createAt;
-
-    @UpdateTimestamp
-    @Column(name = "updateAt")
-    private Date updateAt;
-
-    @Column(name = "status")
-    private Character status;
 }
