@@ -32,8 +32,8 @@ public class Scooter {
     private String key;
 
     @Column(name = "xCoordinate")
-    private Float xCoordinate;
+    private Float coordinateX;
 
     @Column(name = "yCoordinate")
-    private Float yCoordinate;
+    private Float coordinateY;
 }
