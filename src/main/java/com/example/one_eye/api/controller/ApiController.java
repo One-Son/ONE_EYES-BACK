@@ -22,7 +22,7 @@ public class ApiController {
     }
 
     @GetMapping("/location")
-    public BaseResponse<List<Scooter>> locationScooters(@RequestParam float xCoordinate, @RequestParam float yCoordinate){
+    public BaseResponse<List<Scooter>> locationScooters(@RequestParam Float xCoordinate, @RequestParam Float yCoordinate){
         return new BaseResponse<>(apiService.getScootersByLocation(xCoordinate, yCoordinate));
     }
 }
