@@ -24,7 +24,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 @DynamicInsert
 public class Scooter {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 
