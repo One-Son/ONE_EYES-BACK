@@ -26,17 +26,17 @@ public class ApiController {
     }
 
     @GetMapping("/location")
-    public BaseResponse<List<Scooter>> locationScooters(@RequestParam Float xCoordinate, @RequestParam Float yCoordinate){
-        return new BaseResponse<>(apiService.getScootersByLocation(xCoordinate, yCoordinate));
+    public BaseResponse<List<Scooter>> locationScooters(@RequestParam double lat, @RequestParam double lng){
+        return new BaseResponse<>(apiService.getScootersByLocation(lat, lng));
     }
 
     @Scheduled(fixedDelay=200000) // 200초마다 반복
     public void kickGoingApi(){
-        double startLat = 37.4770652d; // 낙성대역
-        double startLng = 126.9634100d;
-        double endLat = 37.4806331d; // 사당역
-        double endLng = 126.9787347d;
-        double distance = 0.0075d;
+        double startLat = 37.4770652; // 낙성대역
+        double startLng = 126.9634100;
+        double endLat = 37.4806331; // 사당역
+        double endLng = 126.9787347;
+        double distance = 0.0075;
 
         for(double locationLat = startLat; locationLat < endLat; locationLat += distance) {
             for(double locationLng = startLng; locationLng < endLng; locationLng += distance) {

@@ -15,11 +15,11 @@ public class ApiService {
      * 사용자의 x좌표, y좌표가 매개 변수로 주어졌을 때
      * range * 2의 길이를 갖는 정사각형 내부에 존재하는 좌표 값을 데이터 베이스에서 찾는다.
     */
-    public List<Scooter> getScootersByLocation(Float xCoordinate, Float yCooridnate){
-        int range = 100;
-        return scooterRepository.findScooterByCoordinateXBetweenAndCoordinateYBetween(
-                xCoordinate - range, xCoordinate + range,
-                        yCooridnate - range, yCooridnate + range);
+    public List<Scooter> getScootersByLocation(double lat, double lng){
+        double range = 0.075;
+        return scooterRepository.findScooterByLatBetweenAndLngBetween(
+                lat - range, lat + range,
+                        lng - range, lng + range);
     }
 
     public void saveScooter(List<Scooter> scooters){

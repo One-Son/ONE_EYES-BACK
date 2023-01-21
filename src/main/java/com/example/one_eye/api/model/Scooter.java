@@ -1,6 +1,5 @@
 package com.example.one_eye.api.model;
 
-import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,15 +10,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.DynamicInsert;
-import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Table(name = "Scooter")
 @Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @DynamicInsert
@@ -32,16 +27,16 @@ public class Scooter {
     @Column(name = "serial")
     private String key;
 
-    @Column(name = "xCoordinate")
-    private Float coordinateX;
+    @Column(name = "lat")
+    private double lat;
 
-    @Column(name = "yCoordinate")
-    private Float coordinateY;
+    @Column(name = "lng")
+    private double lng;
 
     @Builder
-    public Scooter(String key, Float coordinateX, Float coordinateY){
+    public Scooter(String key, double lat, double lng){
         this.key = key;
-        this.coordinateX = coordinateX;
-        this.coordinateY = coordinateY;
+        this.lat = lat;
+        this.lng = lng;
     }
 }
