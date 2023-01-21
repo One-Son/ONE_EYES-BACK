@@ -1,14 +1,19 @@
 package com.example.one_eye.utils;
 
 import java.io.IOException;
+
+import com.example.one_eye.api.model.Scooter;
+import com.example.one_eye.api.repository.ScooterRepository;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.jsoup.Connection.Response;
 import org.jsoup.Jsoup;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
+import java.lang.Float;
 
 @SpringBootApplication
 @EnableScheduling
@@ -30,6 +35,7 @@ public class KickGoing {
                     .userAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.1 Safari/605.1.15")
                     .ignoreContentType(true).execute();
 
+
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
@@ -40,8 +46,25 @@ public class KickGoing {
                 JSONObject detail = parseJson(kickScooter.toString());
                 System.out.printf("serial_number: %s, lat: %f, lng: %f\n",
                         detail.get("serial_number"), detail.get("lat"), detail.get("lng")); // get안에
+                saveScooter(
+                        String.valueOf(detail.get("serial_number")),
+                        Float.valueOf(String.valueOf(detail.get("lat"))),
+                        Float.valueOf(String.valueOf(detail.get("lng")))
+                );
+
             }
         }
+    }
+
+    @Autowired
+    ScooterRepository scooterRepository;
+    private void saveScooter(String serial_number, Float lat, Float lng){
+
+        Scooter scooter = new Scooter();
+        scooter.setKey(serial_number);
+        scooter.setCoordinateX(lng);
+        scooter.setCoordinateY(lat);
+        this.scooterRepository.save(scooter);
     }
 
     private JSONArray parseJsonArray(String str){
