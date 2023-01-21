@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -36,4 +37,11 @@ public class Scooter {
 
     @Column(name = "yCoordinate")
     private Float coordinateY;
+
+    @Builder
+    public Scooter(String key, Float coordinateX, Float coordinateY){
+        this.key = key;
+        this.coordinateX = coordinateX;
+        this.coordinateY = coordinateY;
+    }
 }

@@ -2,7 +2,6 @@ package com.example.one_eye.api.controller;
 
 import com.example.one_eye.api.model.Scooter;
 import com.example.one_eye.api.repository.ScooterRepository;
-import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,5 +20,9 @@ public class ApiService {
         return scooterRepository.findScooterByCoordinateXBetweenAndCoordinateYBetween(
                 xCoordinate - range, xCoordinate + range,
                         yCooridnate - range, yCooridnate + range);
+    }
+
+    public void saveScooter(List<Scooter> scooters){
+        scooterRepository.saveAll(scooters);
     }
 }
