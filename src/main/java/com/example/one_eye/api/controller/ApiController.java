@@ -41,7 +41,6 @@ public class ApiController {
         for(double locationLat = startLat; locationLat < endLat; locationLat += distance) {
             for(double locationLng = startLng; locationLng < endLng; locationLng += distance) {
                 apiService.saveScooter(KickGoing.getKickGoingScooter(locationLat, locationLng));
-
             }
         }
     }

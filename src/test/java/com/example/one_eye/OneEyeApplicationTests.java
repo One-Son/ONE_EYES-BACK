@@ -9,5 +9,4 @@ class OneEyeApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
 }
