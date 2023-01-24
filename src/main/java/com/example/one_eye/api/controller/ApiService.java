@@ -22,7 +22,21 @@ public class ApiService {
                         lng - range, lng + range);
     }
 
+    /**
+     * 기존 테이블에 시리얼이 존재하면 Lat, Lng UPDATE
+     * 존재하지 않으면 INSERT
+     */
     public void saveScooter(List<Scooter> scooters){
-        scooterRepository.saveAll(scooters);
+        for(Scooter scooter: scooters) {
+            Scooter existScooter = scooterRepository.findTopByKey(scooter.getKey());
+            if(existScooter != null){
+                existScooter.setLat(scooter.getLat());
+                existScooter.setLng(scooter.getLng());
+                scooterRepository.save(existScooter);
+            }
+            else{
+                scooterRepository.save(scooter);
+            }
+        }
     }
 }

@@ -10,14 +10,16 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.DynamicInsert;
+import lombok.Setter;
+import org.hibernate.annotations.DynamicUpdate;
 
 @Entity
 @Table(name = "Scooter")
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@DynamicInsert
+@DynamicUpdate
 public class Scooter {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
