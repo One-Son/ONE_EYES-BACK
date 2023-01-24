@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ScooterRepository extends JpaRepository<Scooter, Long> {
-    public List<Scooter> findScooterByCoordinateXBetweenAndCoordinateYBetween
-            (Float minusXCoordinate, Float plusXCoordinate, Float minusYCoordinate, Float plusYCooldinate);
+
+    public List<Scooter> findScooterByLatBetweenAndLngBetween
+            (double minusXCoordinate, double plusXCoordinate, double minusYCoordinate, double plusYCooldinate);
 }
