@@ -1,5 +1,6 @@
 package com.example.one_eye.api.model;
 
+import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +12,9 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Table(name = "Scooter")
@@ -34,6 +37,14 @@ public class Scooter {
 
     @Column(name = "lng")
     private double lng;
+
+    @CreationTimestamp
+    @Column(name = "created_at")
+    private LocalDateTime createAt = LocalDateTime.now();
+
+    @UpdateTimestamp
+    @Column(name = "updated_at")
+    private LocalDateTime updateAt = LocalDateTime.now();
 
     @Builder
     public Scooter(String key, double lat, double lng){
