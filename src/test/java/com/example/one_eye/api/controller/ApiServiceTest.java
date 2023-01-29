@@ -9,14 +9,4 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class ApiServiceTest {
-
-    @Autowired
-    private ScooterRepository scooterRepository;
-
-    @Test
-    public void 저장_테스트(){
-//        Scooter scooter = scooterRepository.findTopByKey("CA7334");
-//        Assertions.assertThat(scooter).isNotNull();
-    }
-
 }
