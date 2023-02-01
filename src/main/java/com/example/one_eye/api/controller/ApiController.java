@@ -42,11 +42,12 @@ public class ApiController {
         double endLng = 127.0271068;
         double distance = 0.0075;
 
-        log.info("Crawling start: " + LocalDateTime.now());
+        log.info("Crawling start");
         for(double locationLat = startLat; locationLat < endLat; locationLat += distance) {
             for(double locationLng = startLng; locationLng < endLng; locationLng += distance) {
                 apiService.saveScooter(KickGoing.getKickGoingScooter(locationLat, locationLng));
             }
         }
+        log.info("Crawling end");
     }
 }

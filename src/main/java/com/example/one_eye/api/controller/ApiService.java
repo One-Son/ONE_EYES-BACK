@@ -21,7 +21,7 @@ public class ApiService {
         return scooterRepository.findScooterByLatBetweenAndLngBetweenAndUpdateAtAfter(
                 lat - range, lat + range,
                         lng - range, lng + range,
-                LocalDateTime.now().minusSeconds(repeatSecond));
+                LocalDateTime.now().minusSeconds(repeatSecond * 3));
     }
 
     /**
