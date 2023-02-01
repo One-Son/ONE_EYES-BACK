@@ -33,10 +33,10 @@ public class Scooter {
     private String key;
 
     @Column(name = "lat")
-    private double lat;
+    private String lat;
 
     @Column(name = "lng")
-    private double lng;
+    private String lng;
 
     @CreationTimestamp
     @Column(name = "created_at")
@@ -47,7 +47,7 @@ public class Scooter {
     private LocalDateTime updateAt = LocalDateTime.now();
 
     @Builder
-    public Scooter(String key, double lat, double lng){
+    public Scooter(String key, String lat, String lng){
         this.key = key;
         this.lat = lat;
         this.lng = lng;
