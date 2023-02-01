@@ -3,7 +3,9 @@ package com.example.one_eye.api.controller;
 import com.example.one_eye.api.model.Scooter;
 import com.example.one_eye.utils.KickGoing;
 import com.example.one_eye.config.BaseResponse;
+import java.time.LocalDateTime;
 import java.util.List;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -14,10 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @EnableScheduling
 @RestController
+@Slf4j
 @RequestMapping("/api")
 public class ApiController {
 
-    private static final long REPEAT_SECOND = 600; //반복 초
+    private static final long REPEAT_SECOND = 60; //반복 초
     @Autowired
     private ApiService apiService;
 
@@ -39,10 +42,10 @@ public class ApiController {
         double endLng = 127.0271068;
         double distance = 0.0075;
 
+        log.info("Crawling start: " + LocalDateTime.now());
         for(double locationLat = startLat; locationLat < endLat; locationLat += distance) {
             for(double locationLng = startLng; locationLng < endLng; locationLng += distance) {
                 apiService.saveScooter(KickGoing.getKickGoingScooter(locationLat, locationLng));
-                System.out.printf("거리 차이 %f, %f\n", locationLat - endLat, locationLng - endLng);
             }
         }
     }

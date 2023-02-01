@@ -17,7 +17,7 @@ public class ApiService {
      * range * 2의 길이를 갖는 정사각형 내부에 존재하는 좌표 값을 데이터 베이스에서 찾는다.
     */
     public List<Scooter> getScootersByLocation(double lat, double lng, long repeatSecond){
-        double range = 0.01; // 0.01 = 약 1000m
+        double range = 0.0025; // 0.01 = 약 1000m
         return scooterRepository.findScooterByLatBetweenAndLngBetweenAndUpdateAtAfter(
                 lat - range, lat + range,
                         lng - range, lng + range,
