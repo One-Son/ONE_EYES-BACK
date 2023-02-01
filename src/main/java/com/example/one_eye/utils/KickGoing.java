@@ -68,8 +68,8 @@ public class KickGoing {
             JSONObject detail = parseJson(kickScooter.toString());
             Scooter scooter = new Scooter(
                     detail.get("serial_number").toString(),
-                    Float.parseFloat(detail.get("lat").toString()),
-                    Float.parseFloat(detail.get("lng").toString())
+                    detail.get("lat").toString(),
+                    detail.get("lng").toString()
             );
 
             // sout 찍어보기

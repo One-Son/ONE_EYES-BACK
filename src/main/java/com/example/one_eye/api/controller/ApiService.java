@@ -4,9 +4,11 @@ import com.example.one_eye.api.model.Scooter;
 import com.example.one_eye.api.repository.ScooterRepository;
 import java.time.LocalDateTime;
 import java.util.List;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+@Slf4j
 @Service
 public class ApiService {
     @Autowired
@@ -21,14 +23,15 @@ public class ApiService {
         return scooterRepository.findScooterByLatBetweenAndLngBetweenAndUpdateAtAfter(
                 lat - range, lat + range,
                         lng - range, lng + range,
-                LocalDateTime.now().minusSeconds(repeatSecond));
+                LocalDateTime.now().minusSeconds(repeatSecond * 3));
     }
 
     /**
      * 기존 테이블에 시리얼이 존재하면 Lat, Lng UPDATE
      * 존재하지 않으면 INSERT
      */
-    public void saveScooter(List<Scooter> scooters){
+    public int saveScooter(List<Scooter> scooters){
+        int count = 0;
         for(Scooter scooter: scooters) {
             Scooter existScooter = scooterRepository.findTopByKey(scooter.getKey());
             if(existScooter != null){
@@ -39,6 +42,9 @@ public class ApiService {
             else{
                 scooterRepository.save(scooter);
             }
+            count += 1;
+            log.info(scooter.getLat() + " " + scooter.getLng() + "\n");
         }
+        return count;
     }
 }
