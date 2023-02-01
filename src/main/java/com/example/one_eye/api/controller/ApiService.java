@@ -21,8 +21,8 @@ public class ApiService {
     public List<Scooter> getScootersByLocation(double lat, double lng, long repeatSecond){
         double range = 0.0025; // 0.01 = 약 1000m
         return scooterRepository.findScooterByLatBetweenAndLngBetweenAndUpdateAtAfter(
-                lat - range, lat + range,
-                        lng - range, lng + range,
+                Double.toString(lat - range), Double.toString(lat + range),
+                Double.toString(lng - range), Double.toString(lng + range),
                 LocalDateTime.now().minusSeconds(repeatSecond * 3));
     }
 

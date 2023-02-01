@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 public class ApiController {
 
-    private static final long REPEAT_SECOND = 60; //반복 초
+    private static final long REPEAT_SECOND = 600; //반복 초
     @Autowired
     private ApiService apiService;
 

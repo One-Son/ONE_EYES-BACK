@@ -10,6 +10,6 @@ import org.springframework.stereotype.Repository;
 public interface ScooterRepository extends JpaRepository<Scooter, Long> {
 
     List<Scooter> findScooterByLatBetweenAndLngBetweenAndUpdateAtAfter
-            (double minusXCoordinate, double plusXCoordinate, double minusYCoordinate, double plusYCooldinate, LocalDateTime timeAfter);
+            (String minusXCoordinate, String plusXCoordinate, String minusYCoordinate, String plusYCooldinate, LocalDateTime timeAfter);
     Scooter findTopByKey(String key);
 }
