@@ -47,13 +47,13 @@ public class ApiController {
         double distance = 0.0075;
         int count = 0;
 
-        for(double locationLat = location.getStartLat(); locationLat < location.getEndLat(); locationLat += distance * 2) {
-            for(double locationLng = location.getStartLng(); locationLng < location.getEndLng(); locationLng += distance * 2) {
+        for(double locationLat = location.getStartLat(); locationLat <= location.getEndLat(); locationLat += distance * 2) {
+            for(double locationLng = location.getStartLng(); locationLng <= location.getEndLng(); locationLng += distance * 2) {
                 count += apiService.saveScooter(KickGoing.getKickGoingScooter(locationLat, locationLng));
             }
         }
-        for(double locationLat = location.getStartLat() + distance; locationLat < location.getEndLat() + distance; locationLat += distance * 2) {
-            for(double locationLng = location.getStartLng() + distance; locationLng < location.getEndLng() + distance; locationLng += distance * 2) {
+        for(double locationLat = location.getStartLat() + distance; locationLat <= location.getEndLat() + distance; locationLat += distance * 2) {
+            for(double locationLng = location.getStartLng() + distance; locationLng <= location.getEndLng() + distance; locationLng += distance * 2) {
                 count += apiService.saveScooter(KickGoing.getKickGoingScooter(locationLat, locationLng));
             }
         }
