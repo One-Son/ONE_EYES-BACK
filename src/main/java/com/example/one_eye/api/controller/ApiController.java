@@ -35,12 +35,12 @@ public class ApiController {
 
     @Scheduled(fixedDelay=REPEAT_SECOND * 1000) // 200000초마다 반복
     public void kickGoingApi(){
-        log.info("Crawling start");
+        log.info("start");
         int count = 0;
         for (Location location: Location.values()) {
             count += saveScooters(location);
         }
-        log.info("Crawling end count = " + count);
+        log.info("DB update count = " + count);
     }
 
     public int saveScooters(Location location){
