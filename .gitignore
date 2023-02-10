@@ -27,6 +27,7 @@ bin/
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
+src/main/java/com/example/one_eye/utils
 
 ### NetBeans ###
 /nbproject/private/

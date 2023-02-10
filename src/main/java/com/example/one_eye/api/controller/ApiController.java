@@ -35,19 +35,28 @@ public class ApiController {
 
     @Scheduled(fixedDelay=REPEAT_SECOND * 1000) // 200000초마다 반복
     public void kickGoingApi(){
-        double startLat = 37.4770652; // 낙성대역
-        double startLng = 126.9634100;
-        double endLat = 37.4956227; // 강남역
-        double endLng = 127.0271068;
-        double distance = 0.0075;
-
         log.info("Crawling start");
         int count = 0;
-        for(double locationLat = startLat; locationLat < endLat; locationLat += distance) {
-            for(double locationLng = startLng; locationLng < endLng; locationLng += distance) {
+        for (Location location: Location.values()) {
+            count += saveScooters(location);
+        }
+        log.info("Crawling end count = " + count);
+    }
+
+    public int saveScooters(Location location){
+        double distance = 0.0075;
+        int count = 0;
+
+        for(double locationLat = location.getStartLat(); locationLat < location.getEndLat(); locationLat += distance * 2) {
+            for(double locationLng = location.getStartLng(); locationLng < location.getEndLng(); locationLng += distance * 2) {
                 count += apiService.saveScooter(KickGoing.getKickGoingScooter(locationLat, locationLng));
             }
         }
-        log.info("Crawling end count = " + count);
+        for(double locationLat = location.getStartLat() + distance; locationLat < location.getEndLat() + distance; locationLat += distance * 2) {
+            for(double locationLng = location.getStartLng() + distance; locationLng < location.getEndLng() + distance; locationLng += distance * 2) {
+                count += apiService.saveScooter(KickGoing.getKickGoingScooter(locationLat, locationLng));
+            }
+        }
+        return count;
     }
 }
