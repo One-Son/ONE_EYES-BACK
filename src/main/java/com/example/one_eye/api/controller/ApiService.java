@@ -38,11 +38,11 @@ public class ApiService {
                 existScooter.setLat(scooter.getLat());
                 existScooter.setLng(scooter.getLng());
                 scooterRepository.save(existScooter);
+                count += 1;
             }
             else{
                 scooterRepository.save(scooter);
             }
-            count += 1;
             log.info(scooter.getLat() + " " + scooter.getLng() + "\n");
         }
         return count;
