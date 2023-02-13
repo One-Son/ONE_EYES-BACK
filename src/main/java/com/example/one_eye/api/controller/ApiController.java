@@ -23,13 +23,13 @@ public class ApiController {
     @Autowired
     private ApiService apiService;
 
-    @GetMapping("/")
-    public String test(){
-        return "hello world";
+    @GetMapping("/location/admin")
+    public BaseResponse<List<Scooter>> adminLocationScooters(){
+        return new BaseResponse<>(apiService.getAdminLocation(REPEAT_SECOND));
     }
 
     @GetMapping("/location")
-    public BaseResponse<List<Scooter>> locationScooters(@RequestParam double lat, @RequestParam double lng){
+    public BaseResponse<List<Scooter>> locationScooters(@RequestParam float lat, @RequestParam float lng){
         return new BaseResponse<>(apiService.getScootersByLocation(lat, lng, REPEAT_SECOND));
     }
 
@@ -44,16 +44,16 @@ public class ApiController {
     }
 
     public int saveScooters(Location location){
-        double distance = 0.0075;
+        float distance = 0.022f;
         int count = 0;
 
-        for(double locationLat = location.getStartLat(); locationLat <= location.getEndLat(); locationLat += distance * 2) {
-            for(double locationLng = location.getStartLng(); locationLng <= location.getEndLng(); locationLng += distance * 2) {
+        for(float locationLat = location.getStartLat(); locationLat <= location.getEndLat(); locationLat += distance * 2) {
+            for(float locationLng = location.getStartLng(); locationLng <= location.getEndLng(); locationLng += distance * 2) {
                 count += apiService.saveScooter(KickGoing.getKickGoingScooter(locationLat, locationLng));
             }
         }
-        for(double locationLat = location.getStartLat() + distance; locationLat <= location.getEndLat() + distance; locationLat += distance * 2) {
-            for(double locationLng = location.getStartLng() + distance; locationLng <= location.getEndLng() + distance; locationLng += distance * 2) {
+        for(float locationLat = location.getStartLat() + distance; locationLat <= location.getEndLat() + distance; locationLat += distance * 2) {
+            for(float locationLng = location.getStartLng() + distance; locationLng <= location.getEndLng() + distance; locationLng += distance * 2) {
                 count += apiService.saveScooter(KickGoing.getKickGoingScooter(locationLat, locationLng));
             }
         }

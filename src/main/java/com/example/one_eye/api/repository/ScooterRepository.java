@@ -12,4 +12,5 @@ public interface ScooterRepository extends JpaRepository<Scooter, Long> {
     List<Scooter> findScooterByLatBetweenAndLngBetweenAndUpdateAtAfter
             (String minusXCoordinate, String plusXCoordinate, String minusYCoordinate, String plusYCooldinate, LocalDateTime timeAfter);
     Scooter findTopByKey(String key);
+    List<Scooter> findScooterByUpdateAtAfter(LocalDateTime minusSeconds);
 }
