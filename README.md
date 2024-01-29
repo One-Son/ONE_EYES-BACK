@@ -8,9 +8,11 @@
 </div>
 <h2 align=center>시각장애인들의 원활한 이동 길 위 안전을 책임, ONE_EYES</h2>
 
+- 킥보드와 거리가 가까워질수록 진동이 자주 울립니다.
+
 <div align=center>
-  
-<img src="https://github.com/marinesnow34/ONE_EYES-BACK/assets/50243183/2764dbfd-49d8-4a31-9701-947544396197" width="30%" height="30%"/>
+
+<img src="https://github.com/One-Son/ONE_EYES-BACK/assets/50243183/e3242635-b924-4b81-a656-6ffb531e9029" width="30%" height="30%"/>
 </div>
 
 
