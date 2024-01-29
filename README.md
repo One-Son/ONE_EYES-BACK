@@ -1,6 +1,14 @@
 <h1 align="center">Welcome to ONE_EYES-Server 👋</h1>
 
-
+<p>
+  <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
+  <a href="https://github.com/kefranabg/readme-md-generator/graphs/commit-activity" target="_blank">
+    <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" />
+  </a>
+  <a href="https://github.com/One-Son/ONE_EYES-BACK/blob/main/LICENSE" target="_blank">
+    <img alt="License: MIT" src="https://img.shields.io/github/license/One-Son/ONE_EYES-BACK" />
+  </a>
+</p>
 > ONE_EYES BACK-End Server Project
 
 <div align=center>
